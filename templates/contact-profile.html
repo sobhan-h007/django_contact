@@ -1,0 +1,126 @@
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>جزئیات مخاطب</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+
+
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{#      <link rel="stylesheet" href="{% static 'style-profile.css' %}">#}
+{#      <style>#}
+{#          #colortext{#}
+{#              color: grey;#}
+{#          }#}
+{#      </style>#}
+	</head>
+	<body >
+    {% include 'templates/partials/header.html' %}
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">پروفایل مخاطبین</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="wrapper img" style="background-image: url({% if contact.image %} {{ contact.image.url }} {% else %} {% static 'images/img.jpg' %} {% endif %})"  >
+
+
+						<div class="row">
+							<div class="col-md-9 col-lg-7">
+                                <a href="{% url 'index'  %}" class="btn btn-primary">
+                                    <i class="fas back-btn">بازگشت</i>
+                                </a>
+								<div class="contact-wrap w-100 p-md-5 p-4">
+
+									<div id="form-message-warning" class="mb-4"></div>
+				      		<div id="form-message-success" class="mb-4">
+				            Your number was sent, thank you!
+				      		</div>
+									<div  id="contactForm"  class="contactForm" >
+                                        {% csrf_token %}
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" id="colortext"  for="name">نام و نام خانوادگی</label>
+                                                    <p class="form-control" id="name">{{ contact.full_name }}</p>
+{#													<input type="text" class="form-control" name="fullname" id="name" placeholder="Name">#}
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" id="colortext" for="email">ایمیل</label>
+                                                    <p class="form-control" id="email">{{ contact.email }}</p>
+{#													<input type="email" class="form-control" name="email" id="email" placeholder="Email">#}
+												</div>
+											</div>
+
+                                            <div class="col-md-6">
+												<div class="form-group">
+													<label class="label" id="colortext" for="relationship">رابطه</label>
+                                                    <p class="form-control" id="email">{{ contact.relationship }}</p>
+{#													<input type="text" class="form-control" name="relationship" id="email" placeholder="Relationship">#}
+												</div>
+											</div>
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" id="colortext" for="subject">شماره تلفن</label>
+                                                    <p class="form-control" id="subject">{{ contact.phone_number }}</p>
+{#													<input type="number" class="form-control" name="phone-number" id="subject" placeholder="Phone number">#}
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" id="colortext" for="#">آدرس</label>
+                                                    <p class="form-control" id="message">{{ contact.address }}</p>
+{#													<textarea name="address" class="form-control" id="message" cols="30" rows="4" placeholder="Address"></textarea>#}
+												</div>
+											</div>
+                                            	{% if user.is_superuser %}
+                                                        <a href=" {% url 'edit-contact' contact.id %} ">
+                                                            <section class="edit-contact">
+                                                                <div class="edit-button">
+                                                                    <i class="fas fa-cog icon-gradient"></i>
+                                                                </div>
+                                                            </section>
+                                                        </a>
+                                                    {% endif %}
+                                            </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <div>
+
+
+
+
+
+{#	<script src="{% static 'js/jquery.min.js' %}"></script>#}
+{#  <script src="{% static 'js/popper.js' %}"></script>#}
+{#  <script src="../static/js/bootstrap.min.js"></script>#}
+{#  <script src="../static/js/jquery.validate.min.js"></script>#}
+{#  <script src="../static/js/main.js"></script>#}
+    <script src="https://kit.fontawesome.com/6b20b1c14d.js" crossorigin="anonymous"></script>
+
+	</body>
+</html>
+

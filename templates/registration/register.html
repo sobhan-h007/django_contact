@@ -1,0 +1,103 @@
+{% load static %}
+<html>
+<head>
+<title>Register Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="{% static 'register.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <style>
+        p{
+            direction: rtl;
+        }
+    </style>
+<!-- //web font -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	{% load crispy_forms_tags %}
+</head>
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>فرم ثبت نام</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+
+				<form method="post">
+                    {% csrf_token %}
+
+                                        {% if form.non_field_errors %}
+
+{#            <p style="color: red!important;">{{ form.non_field_errors }}</p>#}
+            <p style="margin-left: 100px;color: red ">{{ form.non_field_errors }}</p>
+
+        {% endif %}
+
+                    <p>نام کاربری</p>
+                    {{ form.username  }}
+                    <hr>
+                    <p>ایمیل</p>
+                    {{ form.email }}
+                    <hr>
+                    <p>رمز</p>
+                    {{ form.password1 }}
+                    <hr>
+                    <P>تایید رمز</P>
+                    {{ form.password2 }}
+                    <hr>
+					<input type="submit" value="ثبت نام">
+				</form>
+
+				<p>قبلا اکانت داشتی؟ <a href="{% url 'login' %}"> همین الان ورود کن!</a></p>
+<!--				error and finding solution -->
+{% if form.errors %}
+    {% for field in form %}
+        {% if field.errors %}
+            {% for error in field.errors %}
+
+                 <p style="color: red!important;">{{ error }}</p>
+
+            {% endfor %}
+        {% endif %}
+
+    {% endfor %}
+
+
+{% endif %}
+
+
+
+<!--				error and finding solution -->
+
+			</div>
+		</div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			<p>© 2018 Colorlib Signup Form. All rights reserved | Design by <a href="https://colorlib.com/" target="_blank">Colorlib</a></p>
+		</div>
+		<!-- //copyright -->
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
+
+
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

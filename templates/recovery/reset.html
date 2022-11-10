@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Changing Password </title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="../../static/style3.css">
+
+</head>
+<body>
+  <div class="mainDiv">
+    <div class="cardStyle">
+      <form method="post" name="signupForm" id="signupForm">
+        {% csrf_token %}
+        <img src="" id="signupLogo"/>
+
+        <h2 class="formTitle">
+          Enter you new password
+        </h2>
+
+        <div class="inputDiv">
+          <label class="inputLabel" for="password">New Password</label>
+          <input type="password" id="password" name="new_password1" required>
+        </div>
+
+        <div class="inputDiv">
+          <label class="inputLabel" for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="new_password2">
+        </div>
+
+        <div class="buttonWrapper">
+          <button type="submit" id="submitButton" class="submitButton pure-button pure-button-primary">
+            <span>Continue</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  {% if form.errors %}
+    please fix this errors
+        <br>
+    {% for field in form %}
+        {% if field.errors %}
+            {% for error in field.errors %}
+
+                {{ field.label }} : {{ error }}
+
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
+    {% endif %}
+
+
+
+
+</body>
+
+</html>

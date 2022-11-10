@@ -1,0 +1,156 @@
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>ویرایش</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6b20b1c14d.js" crossorigin="anonymous"></script>
+
+      <style>
+          #colortext{
+              color: grey;
+          }
+      </style>
+
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+	</head>
+	<body>
+        {% include 'templates/partials/header.html' %}
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">ویرایش مخاطبین</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="wrapper img" style="background-image: url({% if post.image %} {{ post.image.url }} {% else %} {% static 'images/img.jpg' %} {% endif %})" >
+						<div class="row">
+							<div class="col-md-9 col-lg-7">
+                                 <a href="{% url 'profile' post.id  %}" class="btn btn-primary">
+                                    <i class="fas back-btn">بازگشت</i>
+                                </a>
+								<div class="contact-wrap w-100 p-md-5 p-4">
+
+									<div id="form-message-warning" class="mb-4"></div>
+				      		<div id="form-message-success" class="mb-4">
+				            مخاطب شما ذخیره شد
+				      		</div>
+									<form method="POST" id="contactForm" name="contactForm" class="contactForm" enctype="multipart/form-data" dir="auto">
+                                        {% csrf_token %}
+
+                                        <label for="full_name" dir="rtl" style="margin-left: 300px">نام و نام خانوادگی</label>
+                                        {{ form.full_name }} <br>
+
+                                        <label for="ایمیل" style="margin-left: 380px">ایمیل</label>
+                                        {{ form.email }}<br>
+
+                                        <label for="relationship" style="margin-left: 380px">رابطه</label>
+                                        {{ form.relationship }}<br>
+
+                                        <label for="phone_number" style="margin-left: 380px">تلفن</label>
+                                        {{ form.phone_number }}<br>
+
+                                        <label for="address" style="margin-left: 380px">آدرس</label>
+                                        {{ form.address }}<br>
+
+                                        {{ form.image }}<br><br>
+
+
+
+
+
+{#                                        {{ form.as_p }}#}
+
+{#										<div class="row">#}
+{#											<div class="col-md-6">#}
+{#												<div class="form-group">#}
+{#													<label class="label" id="colortext" for="name">نام و نام خانوادگی</label>#}
+{#													<input type="text" class="form-control" name="fullname" id="name" placeholder="نام و نام خانوادگی" value="{{ contacts.full_name }}" required>#}
+{#												</div>#}
+{#											</div>#}
+{#											<div class="col-md-6">#}
+{#												<div class="form-group">#}
+{#													<label class="label" id="colortext" for="email">ایمیل</label>#}
+{#													<input type="email" class="form-control" name="e-mail" id="email" placeholder="ایمیل" value="{{ contacts.email }}">#}
+{#												</div>#}
+{#											</div>#}
+{#                                            <div class="col-md-6">#}
+{#												<div class="form-group">#}
+{#													<label class="label" id="colortext"  for="relationship">رابطه</label>#}
+{#													<input type="text" class="form-control" name="relationship" id="email" placeholder="عمو,دایی..." value="{{ contacts.relationship }}">#}
+{#												</div>#}
+{#											</div>#}
+{##}
+{#											<div class="col-md-12">#}
+{#												<div class="form-group">#}
+{#													<label class="label" id="colortext" for="subject">شماره تلفن</label>#}
+{#													<input type="text" class="form-control" name="phone-number" id="subject" placeholder="09012345678" value="{{ contacts.phone_number }}" required>#}
+{#												</div>#}
+{#											</div>#}
+{#											<div class="col-md-12">#}
+{#												<div class="form-group">#}
+{#													<label class="label" id="colortext" for="#">آدرس</label>#}
+{#													<textarea name="address" class="form-control" id="message" cols="30" rows="4" placeholder="Address">{{ contacts.address }}</textarea>#}
+{#												</div>#}
+{#											</div>#}
+{#                                            <div class="col-md-12">#}
+{#												<div class="form-group">#}
+{#                                                    {% if contacts.image %}#}
+{#                                                     <label for="id_image">image:</label>#}
+{#                                                    Currently: <a href="{{ contacts.image.url }}">{{ contacts.image.url }}</a>#}
+{#                                                    {% endif %}#}
+{#													<label for="image" style="color: grey"> وارد کنید PNG ,JPG, JPEGعکس خود را به صورت    </label>#}
+{#                                                    <input type="file" name="image" id="id_image"  accept=".jpg, .jpeg, .png">#}
+{#												</div>#}
+{#											</div>#}
+											<div class="col-md-12">
+												<div class="form-group">
+                                                    <input type="submit" class="btn btn-primary" value="ذخیره مخاطب">
+													<div class="submitting"></div>
+												</div>
+
+                                                <a href="{% url 'delete' post.id %}">
+                                                    <div class="form-group">
+                                                        <input type="button" class="btn btn-primary" value="حذف مخاطب">
+                                                    </div>
+                                                </a>
+
+
+
+                                            </div>
+
+                                    </form>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{#	<script src="{% static 'js/jquery.min.js' %}"></script>#}
+{#  <script src="{% static 'js/popper.js' %}"></script>#}
+{#  <script src="../static/js/bootstrap.min.js"></script>#}
+{#  <script src="../static/js/jquery.validate.min.js"></script>#}
+{#  <script src="../static/js/main.js"></script>#}
+
+	</body>
+</html>
+

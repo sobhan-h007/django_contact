@@ -1,0 +1,57 @@
+{% load static %}
+
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>ورود</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+  <div class="login-form">
+  <form method="post">
+
+    {% csrf_token %}
+    <h1>ورود</h1>
+    <div class="content">
+      <div class="input-field">
+        <input type="text" name="username" placeholder="نام کاربری" autocomplete="nope">
+      </div>
+      <div class="input-field">
+        <input type="password" name="password" placeholder="رمز">
+      </div>
+
+<!--      make forgot password here-->
+      <a href="{% url 'reset_password' %}" class='link ' > رمزت یادت رفته ؟   </a>
+        <br>
+{% if messages %}
+{% for message in messages %}
+    <p id="error" style="color: red">{{ message }}</p>
+{% endfor %}
+
+{% endif %}
+
+    </div>
+    <div class="action">
+
+
+        <a href="{% url 'register_user' %}" class="btn btn-info " style="border-radius: 0;"> <span >ثبت نام</span>  </a>
+
+
+      <button type="submit" >ورود</button>
+
+    </div>
+  </form>
+
+
+
+</div>
+<!-- partial -->
+  <script  src="../../static/script.js"></script>
+
+</body>
+</html>

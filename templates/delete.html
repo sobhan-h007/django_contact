@@ -1,0 +1,53 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>حذف</title>
+     <link rel="stylesheet" type="text/css" href="{% static 'style-delete.css' %}">
+
+    <link rel="stylesheet"  type="text/css" href="{% static 'all.min.css' %}" />
+    <link rel="stylesheet"  type="text/css" href="{% static 'slick.css' %}">
+    <link rel="stylesheet"  type="text/css" href="{% static 'slick-theme.css' %}">
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/tooplate-infinite-loop.css' %}" />
+<!--
+Tooplate 2117 Infinite Loop
+https://www.tooplate.com/view/2117-infinite-loop
+-->
+
+  </head>
+  <body  >
+    <!-- Hero section -->
+    <section id="infinite" class="text-white tm-font-big tm-parallax" style="background-color: #0c5460;">
+      <!-- Navigation -->
+
+      <div class="text-center tm-hero-text-container" style=";border: 2px solid gray" >
+        <div class="tm-hero-text-container-inner">
+            <h2 class="tm-hero-title">{{ contact.full_name | title}}</h2>
+            <p class="tm-hero-subtitle">
+              {{ contact.relationship | title }}
+
+            </p>
+        </div>
+          <hr>
+          <p>آیا از حذف کردن این مخاطب اطمینان دارید؟</p>
+      </div>
+
+            <form action="" method="post">
+                {% csrf_token %}
+              <div class="tm-next tm-intro-next">
+                    <button class="text-center tm-down-arrow-link" style="background-color: #357;margin-left: 180mm">
+                        <i class="fas fa-2x  tm-down-arrow" >حذف مخاطب</i>
+                    </button>
+              </div>
+            </form>
+    </section>
+
+
+
+  </body>
+</html>
+

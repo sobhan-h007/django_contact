@@ -1,0 +1,106 @@
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>Add Contact</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+	</head>
+	<body>
+        {% include 'templates/partials/header.html' %}
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">ایجاد مخاطب جدید</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="wrapper img" style="background-image: url({% static 'images/img.jpg' %})" >
+						<div class="row">
+							<div class="col-md-9 col-lg-7">
+								<div class="contact-wrap w-100 p-md-5 p-4">
+									<div id="form-message-warning" class="mb-4"></div>
+				      		<div id="form-message-success" class="mb-4">
+				            مخاطب شما ذخیره شد !
+				      		</div>
+									<form method="POST" id="contactForm" name="contactForm" class="contactForm" enctype="multipart/form-data">
+                                        {% csrf_token %}
+{#                                        {{ form.as_p }}#}
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" for="name">نام و نام خانوادگی</label>
+													<input type="text" class="form-control" name="full_name" id="name" placeholder="نام و نام خانوادگی" required>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" for="email">ایمیل</label>
+													<input type="email" class="form-control" name="email" id="email" placeholder="ایمیل">
+												</div>
+											</div>
+                                            <div class="col-md-6">
+												<div class="form-group">
+													<label class="label" for="relationship">رابطه</label>
+													<input type="text" class="form-control" name="relationship" id="email" placeholder="عمو, دایی ..">
+												</div>
+											</div>
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="subject">شماره تلفن</label>
+													<input type="number" class="form-control" name="phone_number" id="subject" placeholder="۰۹۰۱۲۳۴۵۶۸۷" required>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="#">آدرس</label>
+													<textarea name="address" class="form-control" id="message" cols="30" rows="4" placeholder="آدرس"></textarea>
+												</div>
+											</div>
+                                            <div class="col-md-12">
+												<div class="form-group">
+													<label for="image" style="color: grey"> وارد کنید PNG ,JPG, JPEGعکس خود را به صورت    </label>
+                                                    <input type="file" name="image" id="id_image"  accept=".jpg, .jpeg, .png">
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" value="ذخیره" class="btn btn-primary">
+													<div class="submitting"></div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+{#	<script src="{% static 'js/jquery.min.js' %}"></script>#}
+{#  <script src="{% static 'js/popper.js' %}"></script>#}
+{#  <script src="../static/js/bootstrap.min.js"></script>#}
+{#  <script src="../static/js/jquery.validate.min.js"></script>#}
+{#  <script src="../static/js/main.js"></script>#}
+
+	</body>
+</html>
+
